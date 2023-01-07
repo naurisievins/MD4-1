@@ -935,12 +935,75 @@ console.log(''); // Empty line
 // Return the resulting object
 
 const replaceObjValues = (a:  {[key: string]: string}): {[key: string]: string | null} => {
-    return
+    Object.keys(a).forEach(key => {
+        if (a[key] === '' || a[key] === ' ') {
+            a[key] = null;
+        }
+    });
+    return a;
 }
 
 console.log('--- Task 58 ---'); // Task 58
 console.log(replaceObjValues({ a: 'a', b: 'b', c: '' })) // { a: 'a', b: 'b', c: null }
 console.log(replaceObjValues({ a: '', b: 'b', c: ' ', d: 'd' })) // { a: null, b: 'b', c: null, d: 'd' }
 console.log(replaceObjValues({ a: 'a', b: 'b ', c: ' ', d: '' })) // // { a: 'a', b: 'b ', c: null, d: null }
+console.log(''); // Empty line
+
+// Task 59
+// Write a function that takes an object as argument containing properties with personal information
+// Extract firstName, lastName, size, and weight if available
+// If size or weight is given transform the value to a string
+// Attach the unit cm to the size
+// Attach the unit kg to the weight
+// Return a new object with all available properties that we are interested in
+
+const extractObject = (a:  {[key: string]: string | number}): {[key: string]: string | number} => {
+    const newArray: {[key: string]: string | number} = {};
+    Object.keys(a).forEach(key => {
+        if(key === 'fn' || key === 'ln' || key === 'size' || key === 'weight') {
+            if (key === 'size' ) {
+                newArray[key] = a[key].toString() + 'cm'
+            } else if (key === 'weight') {
+                newArray[key] = a[key].toString() + 'kg'
+            } else {
+                newArray[key] = a[key];
+            }
+        }
+    });
+    return newArray;
+}
+
+console.log('--- Task 59 ---'); // Task 59
+console.log(extractObject({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})) // {fn: 'Lisa', ln: 'Müller', size: '175cm', weight: '67kg'}
+console.log(extractObject({fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: 102})) // {fn: 'Martin', ln: 'Harper', weight: '102kg'}
+console.log(extractObject({fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71})) // {fn: 'Andrew', ln: 'Harper', size: '175cm', weight: '71kg'}
+console.log(extractObject({fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de'})) // {fn: 'Matthew', ln: 'Müller'}
+console.log(''); // Empty line
+
+// Task 60
+// Write a function that takes an array of objects and a string as arguments
+// Add a property with key 'continent' and value equal to the string to each of the objects
+// Return the new array of objects
+// Tip: try not to mutate the original array
+
+const addProperty = (a: {[key: string]: string}[], b: string): {[key: string]: string}[] => {
+    a.forEach(array => {
+       array['continent'] = b; 
+    });
+    return a;
+}
+
+console.log('--- Task 60 ---'); // Task 60
+console.log(addProperty([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia'))
+// [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
+console.log(addProperty([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe'))
+// [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
+console.log(''); // Empty line
+
+// Task 61
+
+
+console.log('--- Task 61 ---'); // Task 61
+
 console.log(''); // Empty line
 
