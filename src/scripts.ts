@@ -449,7 +449,7 @@ console.log(filterArray([false,'2',1], false)) // ['2', 1]
 console.log(filterArray([1,2,'2',1], 1)) // [2, '2']
 console.log(''); // Empty line
 
-// Task 31
+// Task 30
 // Write a function that takes an array (a) as argument
 // Return the number of elements in a
 
@@ -462,8 +462,248 @@ console.log(arrayLength([4,3,2,1,0])) // 5
 console.log(''); // Empty line
 
 // Task 31
+// Write a function that takes an array of numbers as argument
+// Return the number of negative values in the array
+
+const returnNegativeValues = (a: number[]): number => {
+    let counter: number = 0;
+    a.forEach(element => {
+        if (element < 0) {
+            counter++
+        }
+    });
+    return counter;
+}
+
+console.log('--- Task 31 ---'); // Task 31
+console.log(returnNegativeValues([1,-2,2,-4])) // 2
+console.log(returnNegativeValues([0,9,1])) // 0
+console.log(returnNegativeValues([4,-3,2,1,0])) // 1
+console.log(''); // Empty line
+
+// Task 32
+// Write a function that takes an array of numbers as argument
+// It should return an array with the numbers sorted in descending order
+
+const descendingOrder = (a: number[]): number[] => {
+    return a.sort(function(a, b){return b-a});
+}
+
+console.log('--- Task 32 ---'); // Task 32
+console.log(descendingOrder([1,3,2])) // [3,2,1]
+console.log(descendingOrder([4,2,3,1])) // [4,3,2,1]
+console.log(''); // Empty line
+
+// Task 33
+// Write a function that takes an array of strings as argument
+// Sort the array elements alphabetically
+// Return the result
+
+const sortAlphabetically = (a: string[]): string[] => {
+    return a.sort();
+}
+
+console.log('--- Task 33 ---'); // Task 33
+console.log(sortAlphabetically(['b', 'c', 'd', 'a'])) // ['a', 'b', 'c', 'd']
+console.log(sortAlphabetically(['z', 'c', 'd', 'a', 'y', 'a', 'w'])) // ['a', 'a', 'c', 'd', 'w', 'y', 'z']
+console.log(''); // Empty line
+
+// Task 34
+// Write a function that takes an array of numbers as argument
+// It should return the average of the numbers
+
+const averageNumber = (a: number[]): number => {
+    return a.reduce((a, b) => a + b, 0)/a.length;
+}
+
+console.log('--- Task 34 ---'); // Task 34
+console.log(averageNumber([10,100,40])) // 50
+console.log(averageNumber([10,100,1000])) // 370
+console.log(averageNumber([-50,0,50,200])) // 50
+console.log(''); // Empty line
+
+// Task 35
+// Write a function that takes an array of strings as argument
+// Return the longest string
+
+const longestString = (a: string[]): string => {
+    let longest: string = a[0];
+    a.forEach(element => {
+        if (element.length > longest.length) {
+            longest = element;
+        }
+    });
+    return longest;
+}
+
+console.log('--- Task 35 ---'); // Task 35
+console.log(longestString(['help', 'me'])) // 'help'
+console.log(longestString(['I', 'need', 'candy'])) // 'candy'
+console.log(''); // Empty line
+
+// Task 36
+// Write a function that takes an array as argument
+// It should return true if all elements in the array are equal
+// It should return false otherwise
+
+const equalElements = (a: any[]): boolean => {
+    let arrayElement: string = a[0];
+    let isEqual: boolean = true;
+    a.forEach(element => {
+        if (arrayElement !== element) {
+            isEqual = false;
+        }
+    });
+    return isEqual;
+}
+
+console.log('--- Task 36 ---'); // Task 36
+console.log(equalElements([true, true, true, true])) // true
+console.log(equalElements(['test', 'test', 'test'])) // true
+console.log(equalElements([1,1,1,2])) // false
+console.log(equalElements(['10',10,10,10])) // false
+console.log(''); // Empty line
+
+// Task 37
+// Write a function that takes arguments an arbitrary number of arrays
+// It should return an array containing the values of all arrays
+
+const mergeArrays = function(...a: any[]): any[] {
+    let string: string = a.join(',');
+    return string.split(',');
+}
+
+console.log('--- Task 37 ---'); // Task 37
+console.log(mergeArrays([1, 2, 3], [4, 5, 6])) // [1, 2, 3, 4, 5, 6]
+console.log(mergeArrays(['a', 'b', 'c'], [4, 5, 6])) // ['a', 'b', 'c', 4, 5, 6]
+console.log(mergeArrays([true, true], [1, 2], ['a', 'b'])) // [true, true, 1, 2, 'a', 'b']
+console.log(''); // Empty line
+
+// Task 38
+// Write a function that takes an array of objects as argument
+// Sort the array by property b in ascending order
+// Return the sorted array
+
+const arrayOfObjects = (a: any[]): any[] => {
+    let sortedArray = a.sort((obj1: {b: number}, obj2: {b: number}) =>
+    (obj1.b > obj2.b) ? 1 : (obj1.b < obj2.b) ? -1 : 0);
+    return sortedArray;
+}
+
+console.log('--- Task 38 ---'); // Task 38
+console.log(arrayOfObjects([{a:1,b:2},{a:5,b:4}])) // [{a:1,b:2},{a:5,b:4}]
+console.log(arrayOfObjects([{a:2,b:10},{a:5,b:4}])) // [{a:5,b:4},{a:2,b:10}]
+console.log(arrayOfObjects([{a:1,b:7},{a:2,b:1}])) // [{a:2,b:1},{a:1,b:7}]
+console.log(''); // Empty line
+
+// Task 39
+// Write a function that takes two arrays as arguments
+// Merge both arrays and remove duplicate values
+// Sort the merge result in ascending order
+// Return the resulting array
+
+const twoArrays = (a: number[], b: number[]) => {
+    let newArray = a.concat(b).sort((a, b) => (a-b));
+    return newArray = [...new Set(newArray)];
+}
+
+console.log('--- Task 39 ---'); // Task 39
+console.log(twoArrays([1, 2, 3], [3, 4, 5])) // [ 1, 2, 3, 4, 5 ]
+console.log(twoArrays([-10, 22, 333, 42], [-11, 5, 22, 41, 42])) // [ -11, -10, 5, 22, 41,  42, 333]
+console.log(''); // Empty line
+
+// Task 40
+// Write a function that takes an array (a) and a number (b) as arguments
+// Sum up all array elements with a value greater than b
+// Return the sum
+
+const sumElementsGreaterThan = (a: number[], b: number): number => {
+    let counter: number = 0;
+    a.forEach(element => {
+        if (element > b) {
+            counter += element;
+        }
+    });
+    return counter;
+}
+
+console.log('--- Task 40 ---'); // Task 40
+console.log(sumElementsGreaterThan([1, 2, 3, 4, 5, 6, 7], 2)) // 25
+console.log(sumElementsGreaterThan([-10, -11, -3, 1, -4], -3)) // 1
+console.log(sumElementsGreaterThan([78, 99, 100, 101, 401], 99)) // 602
+console.log(''); // Empty line
+
+// Task 41
+// Write a function that takes two numbers (min and max) as arguments
+// Return an array of numbers in the range min to max
+
+const minMaxArray = (min: number, max: number): number[] => {
+    let newArray: number[] = [];
+     for (min; min <= max; min++) {
+            newArray.push(min);
+     }
+    return newArray;
+}
+
+console.log('--- Task 41 ---'); // Task 41
+console.log(minMaxArray(2, 10)) // [2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(minMaxArray(1, 3)) // [1, 2, 3]
+console.log(minMaxArray(-5, 5)) // [-5, -4, -3, -2, -1, 0,  1,  2,  3,  4, 5]
+console.log(minMaxArray(2, 7)) // [2, 3, 4, 5, 6, 7]
+console.log(''); // Empty line
+
+// Task 42
+// Write a function that takes an array of strings as argument
+// Group those strings by their first letter
+// Return an object that contains properties with keys representing first letters
+// The values should be arrays of strings containing only the corresponding strings
+// For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
+// { a: ['Alf', 'Alice'], b: ['Ben']}
+
+const groupStrings = (a: string[]): { [key: string]: string [] } => {
+     let newObject: { [key: string]: string [] } = {};
+    for (let i = 0; i < a.length; i++) {
+        let currentWord: string = a[i];
+        let firstChar: string = currentWord[0].toLocaleLowerCase();
+        let newArray: string[] = [];
+        if (newObject[firstChar] === undefined) {
+            newArray.push(currentWord);
+            newObject[firstChar] = newArray;
+        } else {
+            newObject[firstChar].push(currentWord);
+        }
+    }
+    return newObject;
+}
+
+console.log('--- Task 42 ---'); // Task 42
+console.log(groupStrings(['Alf', 'Alice', 'Ben'])) // { a: ['Alf', 'Alice'], b: ['Ben']}
+console.log(groupStrings(['Ant', 'Bear', 'Bird'])) // { a: ['Ant'], b: ['Bear', 'Bird']}
+console.log(groupStrings(['Berlin', 'Paris', 'Prague'])) // { b: ['Berlin'], p: ['Paris', 'Prague']}
+console.log(''); // Empty line
+
+// Task 43
+// Write a function that takes an array with arbitrary elements and a number as arguments
+// Return a new array, the first element should be either the given number itself
+// or zero if the number is smaller than 6
+// The other elements should be the elements of the original array
+// Try not to mutate the original array
+
+const addFirstToArray = (a: any[], b: number): any[] => {
+    let arrayCopy: any[] = [...a];
+    b < 6 ? arrayCopy.unshift(0) : arrayCopy.unshift(b);
+    return arrayCopy;
+}
+
+console.log('--- Task 43 ---'); // Task 43
+console.log(addFirstToArray([1,2,3], 6)) // [6,1,2,3]
+console.log(addFirstToArray(['a','b'], 2)) // [0,'a','b']
+console.log(addFirstToArray([null,false], 11)) // [11,null,false]
+console.log(''); // Empty line
+
+// Task 44
 
 
-console.log('--- Task 30 ---'); // Task 30
+console.log('--- Task 44 ---'); // Task 44
 
 console.log(''); // Empty line
