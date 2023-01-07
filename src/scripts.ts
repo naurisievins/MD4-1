@@ -852,9 +852,95 @@ console.log(sumObjValues({w:15,x:22,y:13})) // 50
 console.log(''); // Empty line
 
 // Task 54
+// Write a function that takes an object as argument
+// It should return an object with all original object properties
+// except for the property with key 'b'
 
+const delObjProperty = (a: {[key: string]: number}) => {
+    delete a['b'];
+    return a;
+}
 
 console.log('--- Task 54 ---'); // Task 54
+console.log(delObjProperty({ a: 1, b: 7, c: 3 })) // { a: 1, c: 3 }
+console.log(delObjProperty({ b: 0, a: 7, d: 8 })) // { a: 7, d: 8 }
+console.log(delObjProperty({ e: 6, f: 4, b: 5, a: 3 })) // { e: 6, f: 4, a: 3 }
+console.log(''); // Empty line
 
+// Task 55
+// Write a function that takes two objects as arguments
+// Unfortunately, the property 'b' in the second object has the wrong key
+// should be named 'd' instead
+// Merge both objects and correct the wrong property name
+// Return the resulting object
+// It should have the properties 'a', 'b', 'c', 'd', and 'e'
+
+const sumObjects = (a: {[key: string]: number}, b: {[key: string]: number}) => {
+    let bKeyValue: number =  b['b'];
+    delete b['b'];
+    b['d'] = bKeyValue;
+
+    Object.keys(b).forEach(key => {
+        a[key] = b[key];
+    });
+    return a;
+}
+
+console.log('--- Task 55 ---'); // Task 55
+console.log(sumObjects({ a: 1, b: 2 }, { c: 3, b: 4, e: 5 })) // { a: 1, b: 2, c: 3, e: 5, d: 4}
+console.log(sumObjects({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 })) // { a: 5, b: 4, c: 3, e: 2, d: 1}
+console.log(''); // Empty line
+
+// Task 56
+// Write a function that takes an object (a) and a number (b) as arguments
+// Multiply all values of 'a' by 'b'
+// Return the resulting object
+
+const MultiplyObjValuesBy = (a:  {[key: string]: number}, b: number): {[key: string]: number} => {
+    Object.keys(a).forEach(key => {
+        a[key] *= b;
+    });
+    return a;
+}
+
+console.log('--- Task 56 ---'); // Task 56
+console.log(MultiplyObjValuesBy({a:1,b:2,c:3},3)) // {a:3,b:6,c:9}
+console.log(MultiplyObjValuesBy({j:9,i:2,x:3,z:4},10)) // {j:90,i:20,x:30,z:40}
+console.log(MultiplyObjValuesBy({w:15,x:22,y:13},6)) // {w:90,x:132,y:78}
+console.log(''); // Empty line
+
+// Task 57
+// Write a function that takes an object as argument
+// Somehow, the properties and keys of the object got mixed up
+// Swap the Javascript object's key with its values and return the resulting object
+
+const swapKeyWithValue = (a:  {[key: string | number]: string| number}):  {[key: string | number]: string| number} => {
+    let newObject: {[key: string | number]: string| number} = {};
+    Object.keys(a).forEach(key => {
+        newObject[a[key]] = key;
+    });
+    return newObject;
+}
+
+console.log('--- Task 57 ---'); // Task 57
+console.log(swapKeyWithValue({z:'a',y:'b',x:'c',w:'d'})) // {a:'z',b:'y',c:'x',d:'w'}
+console.log(swapKeyWithValue({2:'a',4:'b',6:'c',8:'d'})) // {a:'2',b:'4',c:'6',d:'8'}
+console.log(swapKeyWithValue({a:1,z:24})) // {1:'a',24:'z'}
+console.log(''); // Empty line
+
+// Task 58
+// Write a function that takes an object as argument
+// Some of the property values contain empty strings
+// Replace empty strings and strings that contain only whitespace with null values
+// Return the resulting object
+
+const replaceObjValues = (a:  {[key: string]: string}): {[key: string]: string | null} => {
+    return
+}
+
+console.log('--- Task 58 ---'); // Task 58
+console.log(replaceObjValues({ a: 'a', b: 'b', c: '' })) // { a: 'a', b: 'b', c: null }
+console.log(replaceObjValues({ a: '', b: 'b', c: ' ', d: 'd' })) // { a: null, b: 'b', c: null, d: 'd' }
+console.log(replaceObjValues({ a: 'a', b: 'b ', c: ' ', d: '' })) // // { a: 'a', b: 'b ', c: null, d: null }
 console.log(''); // Empty line
 
