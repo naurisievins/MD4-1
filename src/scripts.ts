@@ -779,7 +779,7 @@ console.log(''); // Empty line
 
 const creatObject = (a: string): {[key: string]: string} => {
     let newObject: {[key: string]: string} = {}; //
-    newObject['key']=a;
+    newObject['key'] = a;
     return newObject;
 }
 
@@ -795,8 +795,8 @@ console.log(''); // Empty line
 // Return the object
 
 const creatObject2 = (a: string, b: string): {[key: string]: string} => {
-    let newObject: {[key: string]: string} = {}; //
-    newObject[a]=b;
+    let newObject: {[key: string]: string} = {};
+    newObject[a] = b;
     return newObject;
 }
 
@@ -807,9 +807,54 @@ console.log(creatObject2('b','w')) // {b:'w'}
 console.log(''); // Empty line
 
 // Task 51
+// Write a function that takes two arrays (a and b) as arguments
+// Create an object that has properties with keys 'a' and corresponding values 'b'
+// Return the object
 
+const objectFromArrays = (a: (string|number)[], b: (string|number)[]): {[key: string | number]: string | number} => {
+    let newObject: {[key: string | number]: string | number} = {};
+    for (let i = 0; i < a.length; i++) {
+        newObject[a[i]] = b[i];
+    }
+    return newObject;
+}
 
 console.log('--- Task 51 ---'); // Task 51
+console.log(objectFromArrays(['a','b','c'],[1,2,3])) // {a:1,b:2,c:3}
+console.log(objectFromArrays(['w','x','y','z'],[10,9,5,2])) // {w:10,x:9,y:5,z:2}
+console.log(objectFromArrays([1,'b'],['a',2])) // {1:'a',b:2}
+console.log(''); // Empty line
+
+// Task 52
+// Write a function that takes an object (a) as argument
+// Return an array with all object keys
+
+const ObjKeysToArray = (a: {[key: string]: number}): string[] => Object.keys(a);
+
+console.log('--- Task 52 ---'); // Task 52
+console.log(ObjKeysToArray({a:1,b:2,c:3})) // ['a','b','c']
+console.log(ObjKeysToArray({j:9,i:2,x:3,z:4})) // ['j','i','x','z']
+console.log(ObjKeysToArray({w:15,x:22,y:13})) // ['w','x','y']
+console.log(''); // Empty line
+
+// Task 53
+// Write a function that takes an object (a) as argument
+// Return the sum of all object values
+
+const sumObjValues = (a: {[key: string]: number}) => {
+    return Object.values(a).reduce((a, b) => a + b, 0);
+}
+
+console.log('--- Task 53 ---'); // Task 53
+console.log(sumObjValues({a:1,b:2,c:3})) // 6
+console.log(sumObjValues({j:9,i:2,x:3,z:4})) // 18
+console.log(sumObjValues({w:15,x:22,y:13})) // 50
+console.log(''); // Empty line
+
+// Task 54
+
+
+console.log('--- Task 54 ---'); // Task 54
 
 console.log(''); // Empty line
 
