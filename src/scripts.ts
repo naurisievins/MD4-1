@@ -702,8 +702,114 @@ console.log(addFirstToArray([null,false], 11)) // [11,null,false]
 console.log(''); // Empty line
 
 // Task 44
+// Write a function that takes an array (a) and a value (n) as arguments
+// Save every nth element in a new array
+// Return the new array
 
+const nthElementInNewArray = (a: number[], b: number): number[] => {
+    let newLength: number = Math.floor(a.length / b);
+    let newArray: number[] = [];
+    for (let i = 1; i <= newLength; i++) {
+        if (newArray.length <= newLength) {
+            newArray.push(a[i*b-1]);
+        }
+    }
+    return newArray;
+}
 
 console.log('--- Task 44 ---'); // Task 44
+console.log(nthElementInNewArray([1,2,3,4,5,6,7,8,9,10],3)) // [3,6,9]
+console.log(nthElementInNewArray([10,9,8,7,6,5,4,3,2,1],5)) // [6,1]
+console.log(nthElementInNewArray([7,2,1,6,3,4,5,8,9,10],2)) // // [2,6,4,8,10]
+console.log(''); // Empty line
+
+// Task 45
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key country
+
+const ObjectReturnProp = (a: { continent: string, country: string}): string => a.country;
+
+console.log('--- Task 45 ---'); // Task 45
+console.log(ObjectReturnProp({  continent: 'Asia',  country: 'Japan'})) // 'Japan'
+console.log(ObjectReturnProp({  country: 'Sweden',  continent: 'Europe'})) // 'Sweden'
+console.log(''); // Empty line
+
+// Task 46
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key 'prop-2'
+// Tip: you might want to use the square brackets property accessor
+
+const ObjectReturnProp2 = (a: {[key: string]: string | number}): string | number => a['prop-2'];
+
+console.log('--- Task 46 ---'); // Task 46
+console.log(ObjectReturnProp2({  one: 1,  'prop-2': 2})) // 2
+console.log(ObjectReturnProp2({  'prop-2': 'two',  prop: 'test'})) // 'two'
+console.log(''); // Empty line
+
+// Task 47
+// Write a function that takes an object with two properties and a string as arguments
+// It should return the value of the property with key equal to the value of the string
+
+const returnfromObject = (a: {[key: string]: string }, b: string): string => a[b];
+
+console.log('--- Task 47 ---'); // Task 47
+console.log(returnfromObject({  continent: 'Asia',  country: 'Japan'}, 'continent')) // 'Asia'
+console.log(returnfromObject({  country: 'Sweden',  continent: 'Europe'}, 'country')) // 'Sweden'
+console.log(''); // Empty line
+
+// Task 48
+// Write a function that takes an object (a) and a string (b) as argument
+// Return true if a has a property with key b
+// Return false otherwise
+
+const ObjHasProperty = (a: {[key: string]: string | number}, b: string): boolean => {
+    return a[b] === undefined ? false : true;
+}
+
+console.log('--- Task 48 ---'); // Task 48
+console.log(ObjHasProperty({a:1,b:2,c:3},'b')) // true
+console.log(ObjHasProperty({x:'a',y:'b',z:'c'},'a')) // false
+console.log(ObjHasProperty({x:'a',y:'b',z:'c'},'z')) // true
+console.log(''); // Empty line
+
+// Task 49
+// Write a function that a string (a) as argument
+// Create an object that has a property with key 'key' and a value of a
+// Return the object
+
+const creatObject = (a: string): {[key: string]: string} => {
+    let newObject: {[key: string]: string} = {}; //
+    newObject['key']=a;
+    return newObject;
+}
+
+console.log('--- Task 49 ---'); // Task 49
+console.log(creatObject('a')) // {key:'a'}
+console.log(creatObject('z')) // {key:'z'}
+console.log(creatObject('b')) // {key:'b'}
+console.log(''); // Empty line
+
+// Task 50
+// Write a function that takes two strings (a and b) as arguments
+// Create an object that has a property with key 'a' and a value of 'b'
+// Return the object
+
+const creatObject2 = (a: string, b: string): {[key: string]: string} => {
+    let newObject: {[key: string]: string} = {}; //
+    newObject[a]=b;
+    return newObject;
+}
+
+console.log('--- Task 50 ---'); // Task 50
+console.log(creatObject2('a','b')) // {a:'b'}
+console.log(creatObject2('z','x')) // {z:'x'}
+console.log(creatObject2('b','w')) // {b:'w'}
+console.log(''); // Empty line
+
+// Task 51
+
+
+console.log('--- Task 51 ---'); // Task 51
 
 console.log(''); // Empty line
+
